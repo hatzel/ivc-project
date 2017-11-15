@@ -21,7 +21,7 @@ camera {
 
 light_source { <2, 14, -3> color White}
 
-box {
+/*box {
     <-8, 0,   15>,  // Near lower left corner
     < 5, 0.6,  -1>   // Far upper right corner
     texture {
@@ -30,30 +30,50 @@ box {
                     // directions
     }
     rotate y*20     // Equivalent to "rotate <0,20,0>"
-  }
+  }*/
 plane { <0, 1, 0>, -1
     pigment {
-      checker color Red, color Blue
+      checker color Black, color Blue
     }
   }
 
-sphere {
+/*sphere {
     <0, 1, 2>, 2
     hollow
     texture {
-      pigment { color White }
+      pigment { color Red }
     }
     interior {
       ior 1.5
       caustics 0.25
     }
-  }
-sphere {
+  }*/
+/*sphere {
     <0, 5, 2>, 1
     texture {
       pigment { color Red }
     }
+  }*/
+
+box {
+    <2,0,0>, <3,1,1>
+    texture {
+      pigment { color Red}
+    }
+}
+box {
+    <-3,0,0>,<-2,1,1>
+    texture {
+      pigment { color Red}
+    }
+}
+sphere {
+  <0,0,0> 1
+  texture {
+      pigment { color Pink}
   }
+  scale <1,1,3>
+}
 /*sky_sphere {
   pigment {
     gradient y
@@ -65,10 +85,3 @@ sphere {
     translate -1
   }
 }*/
-sky_sphere {
-  pigment {
-    color Green
-    }
-    scale 2
-    translate -1
-  }
