@@ -3,12 +3,18 @@
 #include "consts.inc"
 #include "glass.inc"
 #include "metals.inc"
+#include "t-racer_textures.inc"
 
 /*global_settings {assumed_gamma 1.0}*/
 /*background { color Green }*/
 
 // transmit
 #declare Pinkish = color red 0.9 blue 0.4 green 0.2 transmit 0.3;
+
+/*#declare color_hull = color red 0.1 blue 0.1 green 0.1 transmit 0;*/
+/*#declare color_turbine_end = color red 0.01 blue 0.01 green 0.01 transmit 0;*/
+/*#declare color_flaps = color red 0.1 blue 0.05 green 0.05 transmit 0;*/
+/*#declare color_rings = color red 0.01 blue 0.01 green 0.01 transmit 0;*/
  /*#declare Pinkish = color 0.9 0.4 0.2 0.5; */
 
 /*camera {
@@ -19,7 +25,6 @@
    look_at  <0, 1,  2>
  }*/
 
-/*light_source { <2, 14, -3> color White}*/
 #declare turbine_hull_part = intersection {
     difference {
       cylinder {
@@ -55,26 +60,29 @@
 
 #declare ring = difference {
     cylinder { <0,2,0>, <0,2.1,0>, 1.85
-      pigment { Yellow }
+      texture {rings_texture }
     }
     cylinder { <0,-1,0>, <0,4,0>, 1.75 }
       pigment { Red }
 }
 // ============= New ======
 
-#declare Steps = 6;
+#declare Steps = 12;
 #declare Radius = 1.5;
 
 #declare klappe = prism {
+    #local Width = Radius*2*3.1415/Steps;
+    #local Length = 1.5;
     linear_sweep
     linear_spline
     0,0.1,5,
-    <0,0>, <2,0.3>, <2,0.7>, <0,1>,<0,0>
-    pigment { Orange}
-    translate -0.5*z
+    <0,0>, <Length,0.3*Width>, <Length,0.7*Width>, <0,1*Width>,<0,0>
+    texture { flaps_texture }
+    translate -0.5*Width*z
     rotate 90*z
     translate Radius*x
-    rotate 30*z*clock
+    /*rotate 30*z*clock*/
+    rotate 10*z+z*clock
 }
 
 #declare klappen = union {
@@ -85,29 +93,25 @@
 
 #declare coolbine = union {
   lathe {
+    #local Width = 1;
+    #local Length = 1.5;
     linear_spline
     6,
-    <0,-2>, <0.2,-1.75>, <0.4,-1.4>, <0.6,-0.9>, <1,1.6>, <1.3,2>
-    pigment { Red }
-    finish {
-      ambient .3
-      phong .75
-    }
+    <0,Length*-2>, <Width*0.2,Length*-1.75>, <Width*0.4,Length*-1.4>, <Width*0.6,Length*-0.9>, <Width*1,Length*1.6>, <Width*1.3,Length*2>
+    texture { turbine_end_texture }
   }
   lathe {
     linear_spline
     6,
     <1.5,0.5>, <2,1>, <1.8,1>, <1.8,3>, <2,3>, <2,3.2>
-    pigment { Green }
-    finish {
-      ambient .3
-      phong .75
-    }
+    texture { hull_texture }
   }
   object { ring }
+  object { ring translate 1*y}
   object { ring translate 0.5*y }
   object { ring translate -0.5*y }
   object { ring translate -1*y }
+  object { ring translate -1.5*y scale 0.9}
   object {klappen rotate 180*x translate 1*y}
 }
 
