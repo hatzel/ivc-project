@@ -41,7 +41,7 @@ sphere {
     <0, 1, 2>, 2
     hollow
     texture {
-      pigment { color Red }
+      pigment { color White }
     }
     interior {
       ior 1.5
@@ -65,3 +65,10 @@ sphere {
     translate -1
   }
 }*/
+sky_sphere {
+  pigment {
+    color Green
+    }
+    scale 2
+    translate -1
+  }
