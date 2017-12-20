@@ -4,14 +4,13 @@
 camera {
   orthographic
   // perspective
-  location <0, 0, -25>
+  location <0, 0, -20>
   look_at <0, 0, 0>
-  translate 1 * x
   // translate -8 * y
 }
 
 light_source {
-  <0, 0, -1000>
+  <500, 1000, -1000>
   color White
 }
 
@@ -26,7 +25,7 @@ background {
   }
 }*/
 
-object {
+/*object {
   Turbine
   rotate <0, 0, -90>
   translate <-1, -4, 0>
@@ -48,28 +47,29 @@ object {
   Turbine
   rotate <45, 180, 45>
   translate <9, 1, 0>
+}*/
+
+object {
+  Turbine
+  translate <-9, -5, 0>
 }
 
-/*parametric {
-  function { sin(u)*cos(v) }
-  function { sin(u)*sin(v) }
-  function { cos(u) }
+object {
+  Turbine
+  rotate 180 * y
+  translate <-9, 5, 0>
+}
 
-  <0,0>, <2*pi,pi>
-  contained_by { sphere{0, 1.1} }
-  max_gradient 10
-  accuracy 0.0001
-  precompute 10 x,y,z
-  pigment {rgb 1}
-}*/
+object {
+  Turbine
+  rotate 90 * x
+  rotate 180 * y
+  translate 4 * y
+}
 
-/* parametric {
-  function { cos(2*pi*u - pi/2)*cos(2*pi*(-u+v)+pi/2) }
-  function { cos(2*pi*v - pi/2)*cos(2*pi*(-u+v)+pi/2) }
-  function { cos(2*pi*v - pi/2)*cos(2*pi*u-pi/2) }
-  <0,0>, <0.5,1>
-  contained_by { sphere { <0,0,0>, 2.5 } }
-  accuracy 0.001
-  max_gradient 10
-  pigment { Blue }
-}*/
+object {
+  Turbine
+  rotate 90 * x
+  rotate 90 * y
+  translate <9, 4, 0>
+}

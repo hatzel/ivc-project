@@ -197,4 +197,7 @@
     Ring
     translate -1 * y
   }
+  
+  rotate 90 * y
+  rotate -90 * x
 }
