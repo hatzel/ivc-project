@@ -1,7 +1,8 @@
 #include "colors.inc"
 #include "textures.inc"
 camera {
-  location <0, 5, 0>
+  location <0, 5, 1>
+  rotate <0, clock, 0>
   look_at <0, 1, 100>
 }
 
@@ -23,11 +24,13 @@ sphere {
         Polished_Chrome
         normal {
             waves
-            scale 1
-            turbulence 0.6
+            scale 0.7
+            turbulence 0.7 * (sin(clock)/10)
         }
     }
 }
+
+global_settings { number_of_waves 200 }
 
 sky_sphere {
     pigment {
@@ -37,7 +40,7 @@ sky_sphere {
 }
 
 fog {
-    distance 7
+    distance 4
     color rgbt<0.75, 0.4, 1, 0.1>
     fog_type 2
     fog_alt 1
@@ -47,7 +50,7 @@ height_field {
     png "heightmap"
     smooth
     texture { PinkAlabaster }
-    scale 10
+    scale 0.1
     translate <-5, 0, -5>
     scale <10, 0.5, 10>
 }
