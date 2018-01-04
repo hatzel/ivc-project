@@ -1,8 +1,8 @@
 #include "colors.inc"
 #include "textures.inc"
 camera {
-  location <0, 2, 0>
-  look_at <0, 1, 10>
+  location <0, 5, 0>
+  look_at <0, 1, 100>
 }
 
 light_source {
@@ -18,7 +18,15 @@ sphere {
 
 #declare ground = plane {
     <0, 1, 0>, 1
-    texture { PinkAlabaster }
+    /* texture { PinkAlabaster } */
+    texture {
+        Polished_Chrome
+        normal {
+            waves
+            scale 1
+            turbulence 0.6
+        }
+    }
 }
 
 sky_sphere {
@@ -33,6 +41,15 @@ fog {
     color rgbt<0.75, 0.4, 1, 0.1>
     fog_type 2
     fog_alt 1
+}
+
+height_field {
+    png "heightmap"
+    smooth
+    texture { PinkAlabaster }
+    scale 10
+    translate <-5, 0, -5>
+    scale <10, 0.5, 10>
 }
 
 ground
