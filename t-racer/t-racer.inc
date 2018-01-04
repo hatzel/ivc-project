@@ -168,10 +168,18 @@
 
 #declare turbinestart = <-3,0,0>;
 
-#declare t_racer = union {
+// old t_racer
+/* #declare t_racer = union {
     object { turbine translate -3*x }
-    /*object { flap translate min_extent (turbine) }*/
+    object { flap translate min_extent (turbine) }
     object { turbine translate 3*x }
+    object { racebody translate 3*z+2*y }
+  } */
+
+#declare t_racer = union {
+    object { coolbine rotate <-90,0,0> translate -3*x}
+    /*object { flap translate min_extent (turbine) }*/
+    object { coolbine rotate <-90,0,0> translate 3*x}
     object { racebody translate 3*z+2*y }
   }
 
