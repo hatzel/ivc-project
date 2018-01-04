@@ -1,23 +1,12 @@
 #include "colors.inc"
 #include "textures.inc"
-camera {
-  location <clock/10,5,-10>
-  look_at <0, 2, 0>
-  rotate <0, clock*720, 0>
-}
 
 light_source {
   <10, 10, -10>
   color White
 }
 
-/* sphere { */
-/*     <0, 1, 10>, 1 */
-/*     pigment { color rgb <1, 1, 1> } */
-/*     finish { ambient 0.2 diffuse 0 reflection 0.6 } */
-/* } */
-
-#declare ground = plane {
+#declare water = plane {
     <0, 1, 0>, 1
     texture {
         Polished_Chrome
@@ -28,8 +17,6 @@ light_source {
         }
     }
 }
-
-global_settings { number_of_waves 200 }
 
 sky_sphere {
     pigment {
@@ -45,12 +32,13 @@ fog {
     fog_alt 1
 }
 
-height_field {
-    png "heightmap"
+#declare island = height_field {
+    png "include/track/heightmap"
     smooth
     translate <-0.5, 0, -0.5>
     scale <100, 5, 100>
     texture { PinkAlabaster }
 }
 
-ground
+island
+water
