@@ -10,7 +10,7 @@
       (PointA*(1-Value)+PointB*Value)
    #end
    
-// The output is a color vector that changes from ColorA to Color B
+// The output is a color vector that changes from ColorA to ColorB
 // as Value goes from 0.0 to 1.0
    #macro LinearColor (ColorA,ColorB,Value)
       (
@@ -40,7 +40,7 @@
       union {
         sphere {
           PointM, #if(Thickness>0) Thickness * 0.1 #end
-          pigment { color rgbt <1, 1, 1, 0.9> }
+          pigment { color rgbt 1 }
           hollow
           interior {
             media {
