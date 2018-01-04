@@ -22,6 +22,7 @@ endif
 default: $(FRAME_TARGETS) encode
 
 $(OUTDIR)/$(SCENE)%.png:
+	echo "NUMBER OF FRAMES:" $(END_FRAME)
 	mkdir -p $(OUTDIR)
 	povray  +O$(OUTDIR)/$(SCENE).png +SF$* +EF$* $(POVSETTINGS) $(POVQUALITY) scenes/$(SCENE).pov
 
