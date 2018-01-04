@@ -54,7 +54,7 @@
 #declare mycone = difference {
   cone { <0,0,0> 0.5 <0,0,4> 2}
   texture {
-      pigment { color Red }
+      pigment { color Green }
   }
 }
 
@@ -63,7 +63,7 @@
       texture {rings_texture }
     }
     cylinder { <0,-1,0>, <0,4,0>, 1.75 }
-      pigment { Red }
+      texture { inner_texture }
 }
 // ============= New ======
 
@@ -82,7 +82,7 @@
     rotate 90*z
     translate Radius*x
     /*rotate 30*z*clock*/
-    rotate 10*z+z*clock
+    rotate 10*z+360*z*clock
 }
 
 #declare klappen = union {
@@ -91,20 +91,39 @@
   #end
 }
 
-#declare coolbine = union {
-  lathe {
+#declare stabilizer = lathe {
     #local Width = 1;
     #local Length = 1.5;
     linear_spline
     6,
-    <0,Length*-2>, <Width*0.2,Length*-1.75>, <Width*0.4,Length*-1.4>, <Width*0.6,Length*-0.9>, <Width*1,Length*1.6>, <Width*1.3,Length*2>
+    <0,Length*-2>, <Width*0.2,Length*-1.75>, <Width*0.4,Length*-1.4>, <Width*0.6,Length*-0.9>, <Width*1,Length*1.6>, <Width*1,Length*2>
+    /*<Width*1.3,Length*3>,<Width*1,Length*3.5>,<Width*0.6,Length*4.0>,<Width*0.4,Length*4.5>,<Width*0.2,Length*4.85>,<Width*0,Length*5>*/
     texture { turbine_end_texture }
-  }
-  lathe {
+}
+
+#declare hull = lathe {
+    /*bezier_spline*/
     linear_spline
-    6,
-    <1.5,0.5>, <2,1>, <1.8,1>, <1.8,3>, <2,3>, <2,3.2>
+    /*4
+    <2, 11>, <2, 11>, <0, 14.5>, <0, 14.5>*/
+    /*linear_spline */
+    16
+    <1.5,0.5>,<1.5,0.5>,<2,1>,<2,1>,
+    <1.8,1>,<1.8,1>,<1.8,3>,<1.8,3>,
+    <2,3>,<2,3>,<1,3>,<1,3>,
+    <1,5>,<2,5>,<2,7>,<1.8,7>
     texture { hull_texture }
+}
+
+#declare coolbine = union {
+  object {
+    stabilizer
+  }
+  object {
+    stabilizer rotate 180*z translate 6*y
+  }
+  object {
+    hull
   }
   object { ring }
   object { ring translate 1*y}
