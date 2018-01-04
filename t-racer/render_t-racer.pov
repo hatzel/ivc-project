@@ -57,7 +57,7 @@ sky_sphere {
 /*object { coolbine translate 3*x-2*z-2*y rotate <90,0,0> }*/
 /*object { coolbine translate -3*x-2*z-2*y rotate <90,0,0> }*/
 /*object { coolbine translate -2*x+1*y rotate <0,0,0> }*/
-object { coolbine rotate <0, 0, -90> translate <-1, -5, 0> scale 1.3 }
+object { coolbine rotate <0, 0, -90> translate <-7, -5, 0> scale 1.3 }
 
 object { coolbine rotate <90, 0, -90> translate <-7, 5, 0> scale 1.3 }
 
