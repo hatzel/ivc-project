@@ -3,58 +3,12 @@
 #include "shapes.inc"
 #include "shapes3.inc"
 #include "metals.inc"
+#include "transforms.inc"
+#include "../include/fan.inc"
 
-#declare fanThickness = 0.004;
-#declare fanWidth = 0.075;
-#declare fanRound = 0.004;
+#local bezC = 0.55191502449;
+#local bezCN = 1 - bezC;
 
-#declare bezC = 0.55191502449;
-#declare bezCN = 1 - bezC;
-
-#declare fanRoundC = fanRound * bezCN;
-
-#declare FanBlade = prism {
-    conic_sweep
-    bezier_spline
-    0.1, 3.8,
-    32,
-    // top
-    <-(fanWidth - fanRound), fanThickness>, <-(fanWidth - fanRound), fanThickness>, <fanWidth - fanRound, fanThickness>, <fanWidth - fanRound, fanThickness>,
-    // top right
-    <fanWidth - fanRound, fanThickness>, <fanWidth - fanRoundC, fanThickness>, <fanWidth, fanThickness - fanRoundC>, <fanWidth, fanThickness - fanRound>,
-    // right
-    <fanWidth, fanThickness - fanRound>, <fanWidth, fanThickness - fanRound>, <fanWidth, -(fanThickness - fanRound)>, <fanWidth, -(fanThickness - fanRound)>,
-    // bot right
-    <fanWidth, -(fanThickness - fanRound)>, <fanWidth, -(fanThickness - fanRoundC)>, <fanWidth - fanRoundC, -fanThickness>, <fanWidth - fanRound, -fanThickness>,
-    // bot
-    <fanWidth - fanRound, -fanThickness>, <fanWidth - fanRound, -fanThickness>, <-(fanWidth - fanRound), -fanThickness>, <-(fanWidth - fanRound), -fanThickness>,
-    // bot left
-    <-(fanWidth - fanRound), -fanThickness>, <-(fanWidth - fanRoundC), -fanThickness>, <-fanWidth, -(fanThickness - fanRoundC)>, <-fanWidth, -(fanThickness - fanRound)>,
-    // left
-    <-fanWidth, -(fanThickness - fanRound)>, <-fanWidth, -(fanThickness - fanRound)>, <-fanWidth, fanThickness - fanRound>, <-fanWidth, fanThickness - fanRound>,
-    // top left
-    <-fanWidth, fanThickness - fanRound>,  <-fanWidth, fanThickness - fanRoundC>,  <-(fanWidth - fanRoundC), fanThickness>, <-(fanWidth - fanRound), fanThickness>
-    rotate 15 * z + 90 * x
-
-    texture {
-        pigment { color rgb<0.01, 0.01, 0.01> }
-        finish {
-            phong 0.5
-            reflection 0.02
-        }
-    }
-}
-
-#declare numblades = 50;
-
-#declare Fan = union {
-    #for (i, 0, numblades, 1)
-        object {
-            FanBlade
-            rotate 360 / numblades * i * y
-        }
-    #end
-}
 
 #declare Winglet = object{
     Round_Conic_Prism(
@@ -96,10 +50,9 @@
             }
         #end
     }
-    object {
-        Fan
-        translate 1 * y
-    }
+
+    Fan(3.8, <0, 1, 0>, <0, 0, 1>)
+
     union {
         #for (i, 0, 60, 1)
             object {
@@ -201,6 +154,6 @@
                 /*phong 0.5*/
                 specular 1
             }
-      }
+        }
     }
 }
