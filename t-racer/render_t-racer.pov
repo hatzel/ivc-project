@@ -76,7 +76,8 @@ object { coolbine rotate <45, 180, 45> translate <7, 1, 0> scale 1.3 } */
 
 object {t_racer rotate <0, 0, 0> translate <0, 0, 0>}
 object {t_racer rotate <0, 90, 0> translate <-8, 5, 0> }
-object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> }
+/* object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1} */
+object {t_racer rotate <-89, 0, 0> translate <10, -4, 0> scale 0.5}
 
 /* make_t_racer(<10,0,0>, 0, 10) */
 

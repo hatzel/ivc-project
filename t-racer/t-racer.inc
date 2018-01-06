@@ -208,7 +208,7 @@
   #local turbinemargin = 10;
   #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength>, < (turbinemargin/2)-HullRadius, 0,  -HullLength>, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
-  Electric( 0.01,       2,         0.30,     0,        16,          0.5     )
+  Electric( 0.01,       2,         0.30,     0,        16,          0.5, 0.5     )
     object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
     /*object { flap translate min_extent (turbine) }*/
     object { coolbine rotate <-90,0,180> translate (turbinemargin/2)*x}
