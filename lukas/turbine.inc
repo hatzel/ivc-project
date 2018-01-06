@@ -3,7 +3,6 @@
 #include "shapes.inc"
 #include "shapes3.inc"
 #include "metals.inc"
-#include "transforms.inc"
 #include "../include/fan.inc"
 
 #local bezC = 0.55191502449;

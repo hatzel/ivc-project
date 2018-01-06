@@ -1,3 +1,5 @@
+#include "transforms.inc"
+
 #macro _fan_FanBlade()
     #local bezC = 0.55191502449;
     #local bezCN = 1 - bezC;
