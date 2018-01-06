@@ -4,6 +4,7 @@
 #include "glass.inc"
 #include "metals.inc"
 #include "t-racer_textures.inc"
+#include "../include/electric/electric.inc"
 
 /*global_settings {assumed_gamma 1.0}*/
 /*background { color Green }*/
@@ -69,6 +70,8 @@
 
 #declare Steps = 12;
 #declare Radius = 1.5;
+#declare HullRadius = 2;
+#declare HullLength = 6;
 
 #declare klappe = prism {
     #local Width = Radius*2*3.1415/Steps;
@@ -115,7 +118,19 @@
     texture { hull_texture }
 }
 
+
+#declare connectorbase = object {
+    cylinder { <0,0,0>, <0,0,0.2>, 0.5
+      texture { T_Stone25 }
+    rotate <0,90,0>
+  }
+}
+
 #declare coolbine = union {
+  object { connectorbase
+    translate HullRadius*x
+    translate HullLength*y
+  }
   object {
     stabilizer
   }
@@ -175,13 +190,34 @@
     object { turbine translate 3*x }
     object { racebody translate 3*z+2*y }
   } */
+#macro make_t_racer(Position, Rotation, Turbinemargin)
+
+  #local turbinemargin = Turbinemargin;
+  #local RotatedPosition = vrotate(Position, Rotation);
+  #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius+Position.x, Position.y, Position.z>, < (turbinemargin/2)-HullRadius+Position.x, Position.y, Position.z>, V ) #end
+  #macro ElectricColor(V) <0.4,0.7,1.0> #end
+  Electric( 0.01,       2,         0.30,     0,        16,          0.5     )
+  object { t_racer rotate Rotation translate Position}
+    /* object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x translate Position}
+    object { flap translate min_extent (turbine) }
+    object { coolbine rotate <-90,0,180> translate (turbinemargin/2)*x translate Position}
+    object { racebody translate 7*z+2*y translate Position} */
+#end
 
 #declare t_racer = union {
-    object { coolbine rotate <-90,0,0> translate -3*x}
+  #local turbinemargin = 10;
+  #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength>, < (turbinemargin/2)-HullRadius, 0,  -HullLength>, V ) #end
+  #macro ElectricColor(V) <0.4,0.7,1.0> #end
+  Electric( 0.01,       2,         0.30,     0,        16,          0.5     )
+    object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
     /*object { flap translate min_extent (turbine) }*/
-    object { coolbine rotate <-90,0,0> translate 3*x}
-    object { racebody translate 3*z+2*y }
+    object { coolbine rotate <-90,0,180> translate (turbinemargin/2)*x}
+    object { racebody translate 7*z+2*y }
   }
+
+// The upper one flickers very much and doesn't roll.
+
+//           Brightness, Thickness, Fuzzyness RollSpeed FlickerSpeed MinDist
 
 /*box {
     <-8, 0,   15>,  // Near lower left corner
