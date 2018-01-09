@@ -21,6 +21,8 @@ camera {
    look_at  <0, 0,  0>
  }
 
+/*Fan(10, <0,0,0>, <0,0,0>)*/
+
 light_source { <2, 14, -3> color White}
 light_source { <0, 0, -20> color White}
 
@@ -60,8 +62,8 @@ sky_sphere {
 /*object { coolbine translate -2*x+1*y rotate <0,0,0> }*/
 
 // here
-object { coolbine rotate <0, 0, 0> translate <-9, -7, 0> scale 1.3 }
-object { coolbine rotate <0, 0, -90> translate <-10, 8, 0> scale 1.3 }
+/*object { coolbine rotate <0, 0, 0> translate <-9, -7, 0> scale 1.3 }*/
+/*object { coolbine rotate <0, 0, -90> translate <-10, 8, 0> scale 1.3 }*/
 
 
 /* object { coolbine rotate <0, 0, -90> translate <-1, -5, 0> scale 1.3 }
@@ -74,10 +76,13 @@ object { coolbine rotate <45, 180, 45> translate <7, 1, 0> scale 1.3 } */
 
 /* object { coolbine rotate <45, 0, 45> translate <7, -5, 0> scale 1.3 } */
 
-object {t_racer rotate <0, 0, 0> translate <0, 0, 0>}
-object {t_racer rotate <0, 90, 0> translate <-8, 5, 0> }
+// here
+/*object {t_racer rotate <0, 0, 0> translate <0, 0, 0>}*/
+/*object {t_racer rotate <0, 90, 0> translate <-8, 5, 0> }*/
+
 /* object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1} */
-object {t_racer rotate <-89, 0, 0> translate <10, -4, 0> scale 0.5}
+
+/*object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1}*/
 
 /* make_t_racer(<10,0,0>, 0, 10) */
 
@@ -86,6 +91,8 @@ object {t_racer rotate <-89, 0, 0> translate <10, -4, 0> scale 0.5}
 /*object {klappen translate 2*y-3*z-2*x }*/
 
 /*object {klappe}*/
+
+Fan(10, <0,0,0>, <0,0,0>)
 
 sphere {<0,0,0> 0.2 pigment {White}}
 

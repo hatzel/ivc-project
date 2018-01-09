@@ -5,6 +5,7 @@
 #include "metals.inc"
 #include "t-racer_textures.inc"
 #include "../include/electric/electric.inc"
+#include "../include/fan.inc"
 
 /*global_settings {assumed_gamma 1.0}*/
 /*background { color Green }*/
@@ -52,12 +53,12 @@
 }
 
 
-#declare mycone = difference {
+/*#declare mycone = difference {
   cone { <0,0,0> 0.5 <0,0,4> 2}
   texture {
       pigment { color Green }
   }
-}
+}*/
 
 #declare ring = difference {
     cylinder { <0,2,0>, <0,2.1,0>, 1.85
@@ -177,9 +178,7 @@
   }
 }
 
-#declare flap = union {
-  box { <0,0,0>, <2,0.5,4> }
-}
+#declare flap = box { <0,0,0>, <2,0.5,4> }
 
 #declare turbinestart = <-3,0,0>;
 
@@ -196,7 +195,7 @@
   #local RotatedPosition = vrotate(Position, Rotation);
   #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius+Position.x, Position.y, Position.z>, < (turbinemargin/2)-HullRadius+Position.x, Position.y, Position.z>, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
-  Electric( 0.01,       2,         0.30,     0,        16,          0.5     )
+  Electric( 0.01,       2,         0.30,     0,        16,          1     )
   object { t_racer rotate Rotation translate Position}
     /* object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x translate Position}
     object { flap translate min_extent (turbine) }
@@ -208,7 +207,7 @@
   #local turbinemargin = 10;
   #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength>, < (turbinemargin/2)-HullRadius, 0,  -HullLength>, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
-  Electric( 0.01,       2,         0.30,     0,        16,          0.5, 0.5     )
+  Electric( 0.01,       2,         0.30,     0,        16,          0.5, 1     )
     object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
     /*object { flap translate min_extent (turbine) }*/
     object { coolbine rotate <-90,0,180> translate (turbinemargin/2)*x}
