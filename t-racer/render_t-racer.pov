@@ -35,8 +35,8 @@ sky_sphere {
   pigment {
     gradient y
     color_map {
-      /* [ 0.5  color CornflowerBlue ] */
-      [ 0.5  color Black ]
+      [ 0.5  color CornflowerBlue ]
+      /* [ 0.5  color Black ] */
       [ 1.0  color MidnightBlue ]
     }
     scale 2
@@ -62,8 +62,8 @@ sky_sphere {
 /*object { coolbine translate -2*x+1*y rotate <0,0,0> }*/
 
 // here
-/*object { coolbine rotate <0, 0, 0> translate <-9, -7, 0> scale 1.3 }*/
-/*object { coolbine rotate <0, 0, -90> translate <-10, 8, 0> scale 1.3 }*/
+object { coolbine rotate <-20, 0, 0> translate <-9, -7, 0> scale 1.3 }
+object { coolbine rotate <0, 0, -90> translate <-10, 8, 0> scale 1.3 }
 
 
 /* object { coolbine rotate <0, 0, -90> translate <-1, -5, 0> scale 1.3 }
@@ -77,10 +77,10 @@ object { coolbine rotate <45, 180, 45> translate <7, 1, 0> scale 1.3 } */
 /* object { coolbine rotate <45, 0, 45> translate <7, -5, 0> scale 1.3 } */
 
 // here
-/*object {t_racer rotate <0, 0, 0> translate <0, 0, 0>}*/
-/*object {t_racer rotate <0, 90, 0> translate <-8, 5, 0> }*/
+object {t_racer rotate <-30, 0, 0> translate <0, 0, 0>}
+object {t_racer rotate <0, 84, 0> translate <-8, 5, 0> }
 
-/* object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1} */
+object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1}
 
 /*object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1}*/
 
@@ -92,7 +92,6 @@ object { coolbine rotate <45, 180, 45> translate <7, 1, 0> scale 1.3 } */
 
 /*object {klappe}*/
 
-Fan(10, <0,0,0>, <0,0,0>)
 
 sphere {<0,0,0> 0.2 pigment {White}}
 

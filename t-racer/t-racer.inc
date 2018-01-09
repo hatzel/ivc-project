@@ -72,7 +72,9 @@
 #declare Steps = 12;
 #declare Radius = 1.5;
 #declare HullRadius = 2;
-#declare HullLength = 6;
+#declare OuterHullRadius = 2;
+#declare HullLength = 7;
+#declare Connectormargin = 1;
 
 #declare klappe = prism {
     #local Width = Radius*2*3.1415/Steps;
@@ -112,10 +114,10 @@
     <2, 11>, <2, 11>, <0, 14.5>, <0, 14.5>*/
     /*linear_spline */
     16
-    <1.5,0.5>,<1.5,0.5>,<2,1>,<2,1>,
-    <1.8,1>,<1.8,1>,<1.8,3>,<1.8,3>,
-    <2,3>,<2,3>,<1,3>,<1,3>,
-    <1,5>,<2,5>,<2,7>,<1.8,7>
+    <OuterHullRadius*0.75,0.5>,<OuterHullRadius*0.75,0.5>,<OuterHullRadius,1>,<OuterHullRadius,1>,
+    <OuterHullRadius*0.9,1>,<OuterHullRadius*0.9,1>,<OuterHullRadius*0.9,3>,<OuterHullRadius*0.9,3>,
+    <OuterHullRadius,3>,<OuterHullRadius,3>,<OuterHullRadius*0.5,3>,<OuterHullRadius*0.5,3>,
+    <OuterHullRadius*0.5,5>,<OuterHullRadius,5>,<OuterHullRadius,7>,<HullRadius*0.9,7>
     texture { hull_texture }
 }
 
@@ -128,9 +130,10 @@
 }
 
 #declare coolbine = union {
+  Fan(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>)
   object { connectorbase
     translate HullRadius*x
-    translate HullLength*y
+    translate (HullLength-Connectormargin)*y
   }
   object {
     stabilizer
@@ -205,7 +208,7 @@
 
 #declare t_racer = union {
   #local turbinemargin = 10;
-  #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength>, < (turbinemargin/2)-HullRadius, 0,  -HullLength>, V ) #end
+  #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength+Connectormargin>, < (turbinemargin/2)-HullRadius, 0,  -HullLength+Connectormargin>, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
   Electric( 0.01,       2,         0.30,     0,        16,          0.5, 1     )
     object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
