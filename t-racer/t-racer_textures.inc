@@ -32,6 +32,11 @@
     }
 }
 
+#declare connector_texture = texture {
+  pigment { color 0.05 }
+  normal { bumps 0.5 scale 0.5 }
+}
+
 #declare flaps_texture = texture {
   pigment { color red 0.1 blue 0.05 green 0.05 transmit 0 }
   normal {

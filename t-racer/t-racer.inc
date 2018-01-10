@@ -122,12 +122,17 @@
 }
 
 
-#declare connectorbase = object {
-    cylinder { <0,0,0>, <0,0,0.2>, 0.5
-      texture { T_Stone25 }
+#declare connectorbase = union {
+    cylinder { <0,0,0>, <0,0,0.1>, 0.5
+      texture { connector_texture }
     rotate <0,90,0>
+    }
+    cylinder { <0,0,0>, <0,0,0.1>, 0.3
+      texture { connector_texture }
+    rotate <0,90,0>
+    translate <0.1,0,0>
+    }
   }
-}
 
 #declare coolbine = union {
   Fan(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>)
