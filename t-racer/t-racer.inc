@@ -135,9 +135,9 @@
   }
 
 #declare coolbine = union {
-  Fan(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>)
+  Fan_Texture(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>, t_racer_fan_texture)
   object { connectorbase
-    translate HullRadius*x
+    translate HullRadius*0.97*x
     translate (HullLength-Connectormargin)*y
   }
   object {

@@ -1,6 +1,6 @@
 #include "transforms.inc"
 
-#macro _fan_FanBlade()
+#macro _fan_FanBlade(Texture)
     #local bezC = 0.55191502449;
     #local bezCN = 1 - bezC;
 
@@ -32,22 +32,33 @@
         <-fanWidth, fanThickness - fanRound>,  <-fanWidth, fanThickness - fanRoundC>,  <-(fanWidth - fanRoundC), fanThickness>, <-(fanWidth - fanRound), fanThickness>
         rotate 15 * z + 90 * x
 
-        texture {
+        texture { Texture }
+        /*texture {
             pigment { color rgb<0.01, 0.01, 0.01> }
             finish {
                 phong 0.5
                 reflection 0.02
             }
-        }
+        }*/
     }
 #end
 
 #macro Fan(Radius, Position, Direction)
+
+  #local fantexture = texture {
+      pigment { color rgb <0.01, 0.01, 0.01> }
+      finish { phong 0.5 reflection 0.02 }
+      }
+
+   Fan_Texture(Radius, Position, Direction, fantexture)
+#end
+
+#macro Fan_Texture(Radius, Position, Direction, Texture)
     #local numblades = 50;
     union {
         #for (i, 0, numblades, 1)
             object {
-                _fan_FanBlade()
+                _fan_FanBlade(Texture)
                 rotate 360 / numblades * i * y
             }
         #end

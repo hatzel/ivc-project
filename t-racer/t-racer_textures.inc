@@ -32,6 +32,14 @@
     }
 }
 
+#declare t_racer_fan_texture = texture {
+  pigment { color 0.05 }
+  finish {
+    phong 0.5
+    reflection { 0.5 metallic}
+  }
+}
+
 #declare connector_texture = texture {
   pigment { color 0.05 }
   normal { bumps 0.5 scale 0.5 }
