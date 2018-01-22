@@ -69,7 +69,7 @@
 }
 // ============= New ======
 
-#declare Steps = 12;
+#declare shutter_steps = 12;
 #declare Radius = 1.5;
 #declare HullRadius = 2;
 #declare OuterHullRadius = 2;
@@ -77,12 +77,12 @@
 #declare Connectormargin = 1;
 
 #declare klappe = prism {
-    #local Width = Radius*2*3.1415/Steps;
+    #local Width = Radius*2*3.1415/shutter_steps;
     #local Length = 1.5;
     linear_sweep
     linear_spline
-    0,0.1,5,
-    <0,0>, <Length,0.3*Width>, <Length,0.7*Width>, <0,1*Width>,<0,0>
+    0, 0.1, 5,
+    <0,0>, <Length,0.3*Width>, <Length,0.7*Width>, <0,1*Width>, <0,0>
     texture { flaps_texture }
     translate -0.5*Width*z
     rotate 90*z
@@ -92,8 +92,8 @@
 }
 
 #declare klappen = union {
-  #for (i, 0, Steps, 1)
-  object {klappe rotate 360/Steps*i*y}
+  #for (i, 0, shutter_steps, 1)
+  object {klappe rotate 360/shutter_steps*i*y}
   #end
 }
 
@@ -173,18 +173,63 @@
   finish { F_MetalC }
 }
 
-#declare racebody = union {
-  sphere {
-    <0,1,0> 0.5
+#declare c_inner_radius = 2.3;
+
+#declare cockpitsupport = union {
+  #for (i, 0, shutter_steps, 1)
+  cylinder {<0,-1,0> <0,0,0> 0.3 translate -1*c_inner_radius*y rotate 360/shutter_steps*i*x}
+  #end
+}
+
+#declare screen = union {
+  box {<0,0,0> <1.8,0.2,1> }
+}
+
+#declare cockpit =
+union {
+  difference {
+    torus {
+      3 1
+      rotate 90*z
+    }
+    difference {
+      cylinder {
+        <-1,0,0> <1,0,0> 3
+        texture { hull_texture }
+      }
+      /* cylinder {
+        <-2,0,0> <2,0,0> 1
+        texture { hull_texture }
+      } */
+    }
+    /* sphere {
+      <0,1,0> 0.5
+    }
+    sphere {
+    <0,0,0> 1
+    scale <1,1,3>
+    } */
+    texture { turbine_end_texture }
+        /* pigment { color P_Chrome5} */
+    /* } */
   }
-  sphere {
-  <0,0,0> 1
-  scale <1,1,3>
+difference {
+  cylinder {
+    <-1,0,0> <1,0,0> 2.8
+    texture { hull_texture }
   }
-  texture {
-      pigment { color P_Chrome5}
+  cylinder {
+    <-2,0,0> <2,0,0> c_inner_radius
+    texture { hull_texture }
   }
 }
+object { cockpitsupport }
+object { screen rotate 90*x rotate 10*x translate -0.9*x+-0.9*c_inner_radius*z+1*y}
+box { <-1,-1*c_inner_radius,0>, <1,-0.5*c_inner_radius,0.5*c_inner_radius> texture { connector_texture } translate 0*y}
+box { <-1,-1*c_inner_radius,0>, <1,-0.5*c_inner_radius,1*c_inner_radius> texture { connector_texture } translate -1.2*z rotate -60*x }
+/* sphere {0 0.5} */
+}
+
 
 #declare flap = box { <0,0,0>, <2,0.5,4> }
 
@@ -219,7 +264,7 @@
     object { coolbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
     /*object { flap translate min_extent (turbine) }*/
     object { coolbine rotate <-90,0,180> translate (turbinemargin/2)*x}
-    object { racebody translate 7*z+2*y }
+    object { cockpit translate 7*z+2*y }
   }
 
 // The upper one flickers very much and doesn't roll.
