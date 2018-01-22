@@ -1,9 +1,10 @@
 #version 3.7;
+
 #include "colors.inc"
 #include "shapes.inc"
 #include "shapes3.inc"
 #include "metals.inc"
-#include "../include/fan.inc"
+#include "include/fan.inc"
 
 #local bezC = 0.55191502449;
 #local bezCN = 1 - bezC;
@@ -140,10 +141,10 @@
         texture {
             pigment { DarkSlateGray }
 
-            normal {
+            /* normal {
                 bumps 0.02
                 scale 0.001
-            }
+            } */
 
             finish {
                 ambient 0
