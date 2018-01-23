@@ -12,7 +12,7 @@ camera {
    orthographic
    /*fisheye*/
    /*perspective*/
-   location <0, 0, -27>
+   location <0, 0, -47>
    look_at  <0, 0,  0>
  }
 
@@ -57,11 +57,17 @@ object { coolbine rotate <45, 0, 45> translate <-7, -5, 0> scale 1.3 } */
 
 object {t_racer rotate <-30, 0, 0> translate <0, 0, 0>}
 
-object {t_racer rotate <0, 84, 0> translate <-8, 5, 0> }
+object {t_racer rotate <0, 84, 0> translate <-18, 5, 0> }
 
-object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1}
+object {t_racer rotate <-90, 0, 0> translate <15, -4, 0> scale 1}
 
-object {t_racer rotate <-90, 0, 0> translate <10, -4, 0> scale 1}
+object {t_racer rotate <-90, 0, 0> translate <15, -4, 0> scale 1}
+/* object { seat scale 2}
+object { seat scale 2 rotate 45*x translate 10*x}
+object { seat scale 2 rotate 90*x translate 20*x}
+object { seat scale 2 rotate 45*y translate 15*y}
+object { seat scale 2 rotate 90*y translate 15*y-10*x} */
+/* object { seat scale 2 rotate 90*z translate -10*y} */
 
 /* make_t_racer(<10,0,0>, 0, 10) */
 
