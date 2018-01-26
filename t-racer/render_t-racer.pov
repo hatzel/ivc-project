@@ -63,6 +63,16 @@ object {t_racer rotate <0, 84, 0> translate <-28, 5, 0> }
 object {t_racer rotate <-90, 0, 0> translate <25, -4, 0> scale 1}
 
 object {t_racer rotate <-90, 0, 0> translate <25, -4, 0> scale 1}
+
+/* sphere_sweep {
+   linear_spline
+   4,
+   <-5, -5, 0>, 1
+   <-5,  5, 0>, 1
+   < 5, -5, 0>, 1
+   < 5,  5, 0>, 1
+   texture { flaps_texture }
+ } */
 /* object { seat scale 2}
 object { seat scale 2 rotate 45*x translate 10*x}
 object { seat scale 2 rotate 90*x translate 20*x}

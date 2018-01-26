@@ -6,6 +6,7 @@
 #include "t-racer_textures.inc"
 #include "../include/electric/electric.inc"
 #include "../include/round_boi.inc"
+#include "../include/cable.inc"
 #include "turbine.inc"
 #include "cockpit.inc"
 
@@ -53,13 +54,18 @@
 
 #declare t_racer = union {
   #local turbinemargin = 20;
-  #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength+Connectormargin>, < (turbinemargin/2)-HullRadius, 0,  -HullLength+Connectormargin>, V ) #end
+  #local cockpitpos = <0,2,17>;
+  #local connectorposL = <-(turbinemargin/2)+HullRadius, 0, -HullLength+Connectormargin>;
+  #local connectorposR = <(turbinemargin/2)-HullRadius, 0, -HullLength+Connectormargin>;
+  #macro ElectricPath(V) LinearPath( connectorposL, connectorposR, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
-  Electric( 0.01,       2,         0.30,     0,        16,          0.5, 1     )
+  /* Electric( 0.01,       2,         0.30,     0,        16,          0.5, 1     ) */
     object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x }
     /*object { flap translate min_extent (turbine) }*/
     object { tturbine rotate <-90,0,180> translate (turbinemargin/2)*x }
-    object { cockpit translate 17*z+2*y }
+    object { cockpit translate cockpitpos }
+    make_cable(connectorposL, <1,-1,1>, cockpitpos-1*x, <-2,-2,0>,  0.25, flaps_texture)
+    make_cable(connectorposR, <-1,-1,1>, cockpitpos+1*x, <2,-2,0>, 0.25, flaps_texture)
   }
 
 // The upper one flickers very much and doesn't roll.
