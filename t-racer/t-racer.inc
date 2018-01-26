@@ -20,11 +20,11 @@
 // ============= New ======
 
 #declare shutter_steps = 12;
-#declare Radius = 1.5;
-#declare HullRadius = 2;
-#declare OuterHullRadius = 2;
-#declare HullLength = 7;
-#declare Connectormargin = 1;
+#declare Radius = 3;
+#declare HullRadius = 4;
+#declare OuterHullRadius = 4;
+#declare HullLength = 14;
+#declare Connectormargin = 2;
 
 #declare flap = box { <0,0,0>, <2,0.5,4> }
 
@@ -52,14 +52,14 @@
 #end
 
 #declare t_racer = union {
-  #local turbinemargin = 10;
+  #local turbinemargin = 20;
   #macro ElectricPath(V) LinearPath( <-(turbinemargin/2)+HullRadius, 0,  -HullLength+Connectormargin>, < (turbinemargin/2)-HullRadius, 0,  -HullLength+Connectormargin>, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
   Electric( 0.01,       2,         0.30,     0,        16,          0.5, 1     )
-    object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x}
+    object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x }
     /*object { flap translate min_extent (turbine) }*/
-    object { tturbine rotate <-90,0,180> translate (turbinemargin/2)*x}
-    object { cockpit translate 7*z+2*y }
+    object { tturbine rotate <-90,0,180> translate (turbinemargin/2)*x }
+    object { cockpit translate 17*z+2*y }
   }
 
 // The upper one flickers very much and doesn't roll.

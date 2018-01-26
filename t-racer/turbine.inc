@@ -5,12 +5,19 @@
 #include "../include/fan.inc"
 
 // variable settings
-#declare shutter_steps = 12;
+/* #declare shutter_steps = 12;
 #declare Radius = 1.5;
 #declare HullRadius = 2;
 #declare OuterHullRadius = 2;
 #declare HullLength = 7;
-#declare Connectormargin = 1;
+#declare Connectormargin = 1; */
+
+#declare shutter_steps = 12;
+#declare Radius = 3;
+#declare HullRadius = 4;
+#declare OuterHullRadius = 4;
+#declare HullLength = 14;
+#declare Connectormargin = 2;
 
 // objects
 
@@ -54,7 +61,7 @@
 
 #declare klappe = prism {
     #local Width = Radius*2*3.1415/shutter_steps;
-    #local Length = 1.5;
+    #local Length = 3;
     linear_sweep
     linear_spline
     0, 0.1, 5,
@@ -63,7 +70,7 @@
     translate -0.5*Width*z
     rotate 90*z
     translate Radius*x
-    rotate 10*z+360*z*clock
+    rotate 10*z+45*z*clock
 }
 
 #declare klappen = union {
@@ -73,8 +80,8 @@
 }
 
 #declare stabilizer = lathe {
-    #local Width = 1;
-    #local Length = 1.5;
+    #local Width = 2;
+    #local Length = 3;
     linear_spline
     6,
     <0,Length*-2>, <Width*0.2,Length*-1.75>, <Width*0.4,Length*-1.4>, <Width*0.6,Length*-0.9>, <Width*1,Length*1.6>, <Width*1,Length*2>
@@ -83,29 +90,30 @@
 }
 
 #declare hull = lathe {
+    #local length = HullLength;
     /*bezier_spline*/
     linear_spline
     /*4
     <2, 11>, <2, 11>, <0, 14.5>, <0, 14.5>*/
     /*linear_spline */
     16
-    <OuterHullRadius*0.75,0.5>,<OuterHullRadius*0.75,0.5>,<OuterHullRadius,1>,<OuterHullRadius,1>,
-    <OuterHullRadius*0.9,1>,<OuterHullRadius*0.9,1>,<OuterHullRadius*0.9,3>,<OuterHullRadius*0.9,3>,
-    <OuterHullRadius,3>,<OuterHullRadius,3>,<OuterHullRadius*0.5,3>,<OuterHullRadius*0.5,3>,
-    <OuterHullRadius*0.5,5>,<OuterHullRadius,5>,<OuterHullRadius,7>,<HullRadius*0.9,7>
+    <OuterHullRadius*0.75,0.07*length>,<OuterHullRadius*0.75,0.07*length>,<OuterHullRadius,0.15*length>,<OuterHullRadius,0.15*length>,
+    <OuterHullRadius*0.9,0.15*length>,<OuterHullRadius*0.9,0.15*length>,<OuterHullRadius*0.9,0.5*length>,<OuterHullRadius*0.9,0.5*length>,
+    <OuterHullRadius,0.5*length>,<OuterHullRadius,0.5*length>,<OuterHullRadius*0.5,0.5*length>,<OuterHullRadius*0.5,0.5*length>,
+    <OuterHullRadius*0.5,0.7*length>,<OuterHullRadius,0.7*length>,<OuterHullRadius,length>,<HullRadius*0.9,1*length>
     texture { hull_texture }
 }
 
 // the part where the connecting ray emerges from
 #declare connectorbase = union {
-    cylinder { <0,0,0>, <0,0,0.1>, 0.5
+    cylinder { <0,0,0>, <0,0,0.2>, 1
       texture { connector_texture }
     rotate <0,90,0>
     }
-    cylinder { <0,0,0>, <0,0,0.1>, 0.3
+    cylinder { <0,0,0>, <0,0,0.2>, 0.5
       texture { connector_texture }
     rotate <0,90,0>
-    translate <0.1,0,0>
+    translate <0.2,0,0>
     }
   }
 
@@ -113,7 +121,7 @@
   Fan_Texture(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>, t_racer_fan_texture)
   object { connectorbase translate HullRadius*0.97*x translate (HullLength-Connectormargin)*y }
   object { stabilizer }
-  object { stabilizer rotate 180*z translate 6*y }
+  object { stabilizer rotate 180*z translate 12*y }
   object { hull }
   object { ring }
   object { ring translate 1*y }
@@ -121,5 +129,5 @@
   object { ring translate -0.5*y }
   object { ring translate -1*y }
   object { ring translate -1.5*y scale 0.9 }
-  object { klappen rotate 180*x translate 1*y }
+  object { klappen rotate 180*x translate 2*y }
 }

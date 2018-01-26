@@ -14,14 +14,25 @@
 #declare screen = union {
   box {<0,0,0> <0.9*c_outer_radius/3,0.2,0.5*c_outer_radius/3> }
 }
+
 #declare seat = union {
   #local seat_width = 1;
   #local seat_depth = 0.5*c_inner_radius;
   difference {
-    box { <-seat_width,-c_inner_radius,0>, <seat_width,-seat_depth,seat_depth> texture { connector_texture } translate 0*y}
-    box { <-0.8*seat_width,-1.5*seat_depth,-1>, <0.8*seat_width,-0.5*seat_depth,0.9*seat_depth> texture { connector_texture } }
+    box {
+      <-seat_width,-c_inner_radius,0>, <seat_width,-seat_depth,seat_depth>
+      texture { connector_texture } translate 0*y
+    }
+    box {
+      <-0.8*seat_width,-1.5*seat_depth,-1>, <0.8*seat_width,-0.5*seat_depth,0.9*seat_depth>
+      texture { connector_texture }
+    }
   }
-  box { <-1,-0.7*c_inner_radius,0>, <1,-0.5*c_inner_radius,1*c_inner_radius> texture { connector_texture } translate -seatheight*2.3*z rotate -60*x }
+  box {
+    <-1,-0.7*c_inner_radius,0>, <1,-0.5*c_inner_radius,1*c_inner_radius>
+    texture { connector_texture }
+    translate -seatheight*2.3*z rotate -60*x
+  }
 }
 
 #declare cockpit = union {
@@ -66,5 +77,5 @@
   object { screen rotate 90*x rotate 10*x translate -0.9*x+-0.95*c_inner_radius*z+1*y}
   object { seat }
   /* sphere {0 0.5} */
-  RoundBoi(<0,-c_inner_radius,0>)
+  RoundBoi(<0,-c_inner_radius+2,0>)
 }

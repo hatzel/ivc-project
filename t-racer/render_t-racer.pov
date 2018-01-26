@@ -9,10 +9,11 @@ global_settings {assumed_gamma 1.0}
 background { color Green }
 
 camera {
-   orthographic
+   /* orthographic */
    /*fisheye*/
    /*perspective*/
    location <0, 0, -47>
+   right <16/9, 0, 0>
    look_at  <0, 0,  0>
  }
 
@@ -57,11 +58,11 @@ object { coolbine rotate <45, 0, 45> translate <-7, -5, 0> scale 1.3 } */
 
 object {t_racer rotate <-30, 0, 0> translate <0, 0, 0>}
 
-object {t_racer rotate <0, 84, 0> translate <-18, 5, 0> }
+object {t_racer rotate <0, 84, 0> translate <-28, 5, 0> }
 
-object {t_racer rotate <-90, 0, 0> translate <15, -4, 0> scale 1}
+object {t_racer rotate <-90, 0, 0> translate <25, -4, 0> scale 1}
 
-object {t_racer rotate <-90, 0, 0> translate <15, -4, 0> scale 1}
+object {t_racer rotate <-90, 0, 0> translate <25, -4, 0> scale 1}
 /* object { seat scale 2}
 object { seat scale 2 rotate 45*x translate 10*x}
 object { seat scale 2 rotate 90*x translate 20*x}
