@@ -1,5 +1,6 @@
 #include "colors.inc"
 #include "textures.inc"
+#include "include/blender_materials.inc"
 
 light_source {
   <10, 10, -10>
@@ -37,7 +38,8 @@ fog {
     smooth
     translate <-0.5, 0, -0.5>
     scale <100, 5, 100>
-    texture { PinkAlabaster }
+    /* texture { PinkAlabaster } */
+    texture { Sand }
 }
 
 island
