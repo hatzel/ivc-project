@@ -18,7 +18,4 @@ background {
   color Blue
 }
 
-StartArch(0)
-
-/* StartLight(0) */
-/* arc */
+StartArch(1)

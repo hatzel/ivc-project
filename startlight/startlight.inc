@@ -87,28 +87,30 @@ netural_light
 #macro StartLight(waiting)
 #local green_light = object {
     Lightdisk(material { M_Green_Glass }, 1)
-    translate <0, 5/4, 0.5>
+    translate <0, 5/4, 0.3>
 }
 
 #local red_light = object {
     Lightdisk(material { M_Ruby_Glass }, 1)
-    translate <0, 5-5/4, 0.5>
+    translate <0, 5-5/4, 0.3>
 }
 
 union {
-    object {
-        no_lights
+    difference {
+        object {no_lights}
+        object {green_light}
+        object {red_light}
     }
     green_light
-    #if (waiting)
+    #if (!waiting)
     light_source {
-      <0,5/4, 1.3>, rgb <5,50,2> //a green light
+      <0,5/4, 0.9>, rgb <5,40,0.5> //a green light
     }
     #end
     red_light
-    #if (!waiting)
+    #if (waiting)
     light_source {
-      <0,5-5/4, 1.3>, rgb <50,10,1> //a red light
+      <0,5-5/4, 0.9>, rgb <50,10,1> //a red light
     }
     #end
     rotate y*180
