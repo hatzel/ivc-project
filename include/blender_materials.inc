@@ -1,5 +1,8 @@
 #version 3.7;
+// Things in this file are taken from:
+// https://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Render/POV-Ray/Sample_Materials
 
+// Gets everywhere, is course
 #declare Sand=
   texture{
     pigment{
@@ -27,5 +30,28 @@
     	[0.8 color rgbt <.356, .250, .047, 1>]
     	[1.0 color rgbt <.171, .136, .1, 1>]
       }
+    }
+  }
+
+
+#declare Rubber =
+  texture{
+    pigment{
+      aoi
+      color_map{
+        [0.00 rgb <.0075, .0175, .0025>]
+        [0.55 rgb <.020, .022, .024>]
+        [0.65 rgb <.004, .004, .004>]
+        [0.85 rgb <.006, .002, .001>]
+        [1.00 rgb <.007, .004, .001>]
+      }
+      poly_wave 1.25
+      scale 0.1
+    }
+    normal {bozo 0.2 scale 0.25}
+    finish{
+      specular .015
+      roughness .075
+      brilliance 0.275
     }
   }
