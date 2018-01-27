@@ -27,7 +27,7 @@
     <-12, 1>, <-12, 1>, <-12, 0>, <-12, 0>
     
     
-    texture { WhiteTexture }
+    texture { GrayTexture }
   }
   
   cone {
