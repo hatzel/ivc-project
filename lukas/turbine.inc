@@ -5,6 +5,7 @@
 #include "shapes3.inc"
 #include "metals.inc"
 #include "include/fan.inc"
+#include "include/blender_materials.inc"
 
 #local bezC = 0.55191502449;
 #local bezCN = 1 - bezC;
@@ -20,18 +21,7 @@
         // max. = min(lower radius, upper radius)!
         0 // Merge_On: 0 or 1
     )
-    texture {
-        pigment {
-            color rgb <0.9, 0.4, 0>
-        }
-        finish {
-            phong 0.95
-            reflection {
-                0.05
-                metallic
-            }
-        }
-    }
+    CarPaint(rgb <0.9, 0.4, 0>)
     scale <1, 1, 1>
     rotate <0, 0, 180>
     translate <0, 6.8, -3.7>

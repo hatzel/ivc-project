@@ -4,56 +4,7 @@
 #include "include/round_boi.inc"
 #include "shapes.inc"
 #include "shapes3.inc"
-
-// https://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Render/POV-Ray/Sample_Materials
-#local Rubber =
-texture {
-    pigment {
-        aoi
-        color_map {
-            [0.00 rgb <.0075, .0175, .0025>]
-            [0.55 rgb <.020, .022, .024>]
-            [0.65 rgb <.004, .004, .004>]
-            [0.85 rgb <.006, .002, .001>]
-            [1.00 rgb <.007, .004, .001>]
-        }
-        poly_wave 1.25
-        scale 0.1
-    }
-    normal { bozo 0.2 scale 0.25 }
-    finish {
-        specular .015
-        roughness .075
-        brilliance 0.275
-    }
-}
-
-#local Leather = texture {
-    pigment {
-        crackle
-        metric 3
-        turbulence .25
-        color_map {
-            [0.00 rgb <.015, .008, .004>]
-            [0.25 rgb <.017, .008, .004>]
-            [0.50 rgb <.010, .002, .004>]
-            [0.75 rgb <.008, .002, .004>]
-            [1.00 rgb <.006, .002, .003>]
-        }
-        scale 0.1
-    }
-    normal {
-        crackle
-        metric 3
-        turbulence .25
-        //granite .16
-        scale 0.1
-    }
-    finish {
-        specular .04
-        roughness .1
-    }
-}
+#include "include/blender_materials.inc"
 
 #declare Cockpit = union {
     difference {
@@ -64,18 +15,7 @@ texture {
         cylinder {
             <0, 0, 0>, <0, 4, 0>, 6.8
         }
-        texture {
-            pigment {
-                color rgb <0.9, 0.4, 0>
-            }
-            finish {
-                phong 0.95
-                reflection {
-                    0.05
-                    metallic
-                }
-            }
-        }
+        CarPaint(rgb <0.9, 0.4, 0>)
     }
 
     difference {
