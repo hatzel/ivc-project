@@ -1,5 +1,5 @@
 #version 3.7;
-#include "MyTextures.inc"
+#include "fabRacer/MyTextures.inc"
 
 // EnergyPlugPosition = 0 or 180
 #macro Turbine(EnergyPlugPosition)

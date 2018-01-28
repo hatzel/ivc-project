@@ -1,6 +1,7 @@
 #include "include/track/track.inc"
 #include "lukas/pod.inc"
 #include "t-racer/t-racer.inc"
+#include "fabRacer/fabRacer.pov"
 
 camera {
   location <890, 80, 820 - clock/10>
@@ -24,5 +25,10 @@ object {
 object {
     t_racer
     scale 0.5
+    translate <900, 65, 710>
+}
+
+object {
+    fabRacer
     translate <900, 65, 710>
 }
