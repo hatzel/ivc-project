@@ -7,21 +7,21 @@
 #macro LukasPod(Position, Direction)
     union {
         object {
-          Turbine
+          LuTurbine
           Reorient_Trans(<0, -1, 0>, <0, 0, 1>)
           Reorient_Trans(<0, -1, 0>, <-1, 0, 0>)
           translate <-12, 0, 20>
         }
 
         object {
-          Turbine
+          LuTurbine
           Reorient_Trans(<0, -1, 0>, <0, 0, 1>)
           Reorient_Trans(<0, -1, 0>, <1, 0, 0>)
           translate <12, 0, 20>
         }
 
         object {
-            Cockpit
+            LuCockpit
             translate <0, 0, -20>
         }
 

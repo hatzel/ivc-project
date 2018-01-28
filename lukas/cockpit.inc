@@ -6,7 +6,7 @@
 #include "shapes3.inc"
 #include "include/blender_materials.inc"
 
-#declare Cockpit = union {
+#declare LuCockpit = union {
     difference {
         intersection {
             sphere { <0, 118, 0>, 120 }

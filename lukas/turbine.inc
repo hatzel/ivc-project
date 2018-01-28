@@ -11,7 +11,7 @@
 #local bezCN = 1 - bezC;
 
 
-#declare Winglet = object{
+#declare LuWinglet = object{
     Round_Conic_Prism(
         6.4, // >0, vertical center distance
         0.5, // >0, upper radius
@@ -31,11 +31,11 @@
 #declare cradiusC = cradius * bezCN;
 #declare endradius = 0.5;
 
-#declare Turbine = union {
+#declare LuTurbine = union {
     union {
         #for (a, -25, 25, 25)
             object {
-                Winglet
+                LuWinglet
                 rotate a * y
             }
         #end
