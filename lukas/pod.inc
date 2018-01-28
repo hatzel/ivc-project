@@ -10,14 +10,14 @@
           Turbine
           Reorient_Trans(<0, -1, 0>, <0, 0, 1>)
           Reorient_Trans(<0, -1, 0>, <-1, 0, 0>)
-          translate <-15, 0, 20>
+          translate <-12, 0, 20>
         }
 
         object {
           Turbine
           Reorient_Trans(<0, -1, 0>, <0, 0, 1>)
           Reorient_Trans(<0, -1, 0>, <1, 0, 0>)
-          translate <15, 0, 20>
+          translate <12, 0, 20>
         }
 
         object {

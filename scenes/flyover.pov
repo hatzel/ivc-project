@@ -17,7 +17,7 @@ object {
 
 object {
     LukasPod(<0, 0, 0>, <0,0,1>)
-    scale 0.4
+    scale 0.5
     translate <880, 65, 700>
 }
 
