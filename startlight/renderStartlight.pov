@@ -18,4 +18,4 @@ background {
   color Blue
 }
 
-StartArch(1)
+StartArch(0)

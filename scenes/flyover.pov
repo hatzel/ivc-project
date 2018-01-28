@@ -1,4 +1,5 @@
 #include "include/track/track.inc"
+#include "lukas/pod.inc"
 
 camera {
   location <890, 80, 820 - clock/10>
@@ -12,4 +13,9 @@ object {
     scale z*-1
     translate <890, 60, 710>
 }
+
+/* object { */
+/*     LukasPod(0, 0) */
+/*     translate <890, 100, 710> */
+/* } */
 
