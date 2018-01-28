@@ -1,3 +1,5 @@
+#include "include/startsetup.inc"
+
 camera {
   location <100, 40, 170 - clock>
   look_at <0, 10, 0>
@@ -5,5 +7,3 @@ camera {
 }
 
 Track(0, <890, 60, 710>)
-
-#include "include/startsetup.inc"
