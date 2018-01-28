@@ -53,6 +53,14 @@
   }
 }
 
+#declare cable_texture = texture {
+  pigment { color red 0.01 blue 0.01 green 0.01 transmit 0 }
+  normal {
+    bumps 0.9
+    scale 0.01
+  }
+}
+
 #declare rings_texture = texture {
   pigment { color red 0.01 blue 0.01 green 0.01 transmit 0 }
   normal {
