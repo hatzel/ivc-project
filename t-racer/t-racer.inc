@@ -68,7 +68,7 @@
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
   // old settings
   /* Electric( 0.01,       2,         0.30,     0,        16,          0.3, 1     ) */
-  /* Electric( 0.01,       2,         0.20,     6,        11,          0.3     1) */
+  Electric( 0.01,       2,         0.20,     6,        11,          0.3     1)
   object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x+wobble*y }
   /*object { flap translate min_extent (turbine) }*/
   object { tturbine rotate <-90,0,90> translate (turbinemargin/2)*x+wobble*y }
