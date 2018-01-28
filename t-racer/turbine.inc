@@ -119,7 +119,10 @@
 
 #declare tturbine = union {
   Fan_Texture(OuterHullRadius*0.99, <0,HullLength*0.95,0>, <1,0,0>, t_racer_fan_texture)
+  // lightning base
   object { connectorbase translate HullRadius*0.97*x translate (HullLength-Connectormargin)*y }
+  // cable base
+  object { connectorbase rotate <0,-90,0> translate HullRadius*0.97*z translate (HullLength-Connectormargin)*y }
   object { stabilizer }
   object { stabilizer rotate 180*z translate 12*y }
   object { hull }
