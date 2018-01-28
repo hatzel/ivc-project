@@ -3,11 +3,6 @@
 #include "include/blender_materials.inc"
 #include "include/startlight.inc"
 
-light_source {
-  <0, 1000, 0>
-  color <0.25,0.5,0.1>
-}
-
 #declare water = plane {
     <0, 1, 0>, 1
     texture {
@@ -20,19 +15,6 @@ light_source {
     }
 }
 
-sky_sphere {
-    pigment {
-        Blue_Sky3
-        scale 5
-    }
-}
-
-fog {
-    distance 0.2
-    color rgbt<0.75, 0.4, 1, 0.1>
-    fog_type 2
-    fog_alt 1
-}
 
 #declare island = height_field {
     png "include/track/heightmap"
@@ -45,6 +27,33 @@ fog {
     }
 }
 
+#macro Track(waiting)
+    sky_sphere {
+        pigment {
+            Blue_Sky3
+            scale 5
+        }
+    }
 
-island
-water
+    light_source {
+      <0, 1000, 0>
+      color <1,0.7,0.9>
+    }
+
+    fog {
+        distance 0.2
+        color rgbt<0.75, 0.4, 1, 0.1>
+        fog_type 2
+        fog_alt 1
+    }
+
+    union {
+        object {
+            StartArch(0)
+            scale z*-1
+            translate <890, 60, 710>
+        }
+        island
+        water
+    }
+#end
