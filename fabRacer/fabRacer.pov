@@ -30,8 +30,8 @@
       rotate 90 * y
       translate <30, 5, 0>
     }
-    make_cable(<5.5, 4, -10>, 0, <30, 5.5, -11.5>, 0, 0.3, Rubber)
-    make_cable(<5.5, 4, 10>, 0, <30, 5.5, 11.5>, 0, 0.3, Rubber)
+    fab_make_cable(<5.5, 4, -10>, 0, <30, 5.5, -11.5>, 0, 0.3, Rubber)
+    fab_make_cable(<5.5, 4, 10>, 0, <30, 5.5, 11.5>, 0, 0.3, Rubber)
 //        Brightness, Thickness, Fuzzyness RollSpeed FlickerSpeed MinDist Lightscale
     Electric( 0.01,       2,         0.10,     5,        10,          0.3     1)
 }
