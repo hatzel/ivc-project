@@ -37,7 +37,7 @@
                     object {
                         RoundBoiOffset(<0, 0, 0>, rand(Rand))
                         translate <600 - (Step - 0.05) * 50, Step * 40, 0>
-                        rotate <0, Seat, 0>
+                        rotate <0, Seat + (rand(Rand) * 2 - 1) * 0.1, 0>
                         translate <-575, 0, 0>
                     }
                 #end
