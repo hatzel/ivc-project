@@ -54,21 +54,24 @@
 
 #declare t_racer = union {
   #local turbinemargin = 20;
+
+  #local Rand = seed(1337);
+  #local wobble = 0.7*sin(0.1*clock+Rand);
   #local cockpitpos = <0,2,17>;
   #local cablesocketposL = cockpitpos+<-width_scale-cablesocketradius,-width_scale,-c_inner_radius>;
   #local cablesocketposR = cockpitpos+<width_scale+cablesocketradius,-width_scale,-c_inner_radius>;
-  #local cableconnectorposL = <-(turbinemargin/2), HullRadius, -HullLength+Connectormargin>;
-  #local cableconnectorposR = <(turbinemargin/2), HullRadius, -HullLength+Connectormargin>;
-  #local connectorposL = <-(turbinemargin/2)+HullRadius, 0, -HullLength+Connectormargin>;
-  #local connectorposR = <(turbinemargin/2)-HullRadius, 0, -HullLength+Connectormargin>;
-  #macro ElectricPath(V) LinearPath( connectorposL, connectorposR, V ) #end
+  #local cableconnectorposL = <-(turbinemargin/2), HullRadius+wobble, -HullLength+Connectormargin>;
+  #local cableconnectorposR = <(turbinemargin/2), HullRadius+wobble, -HullLength+Connectormargin>;
+  #local connectorposL = <-(turbinemargin/2)+HullRadius, wobble, -HullLength+Connectormargin>;
+  #local connectorposR = <(turbinemargin/2)-HullRadius, wobble, -HullLength+Connectormargin>;
+  #macro ElectricPath(V) LinearPath( connectorposL+wobble*y, connectorposR+wobble*y, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
   // old settings
   /* Electric( 0.01,       2,         0.30,     0,        16,          0.3, 1     ) */
-  Electric( 0.01,       2,         0.20,     6,        11,          0.3     1)
-  object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x }
+  /* Electric( 0.01,       2,         0.20,     6,        11,          0.3     1) */
+  object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x+wobble*y }
   /*object { flap translate min_extent (turbine) }*/
-  object { tturbine rotate <-90,0,90> translate (turbinemargin/2)*x }
+  object { tturbine rotate <-90,0,90> translate (turbinemargin/2)*x+wobble*y }
   object { cockpit translate cockpitpos }
   make_cable(cableconnectorposL, <1,1,2>, cablesocketposL, <0,0,0>,  0.25, cable_texture)
   make_cable(cableconnectorposR, <-1,1,2>, cablesocketposR, <0,0,0>, 0.25, cable_texture)
