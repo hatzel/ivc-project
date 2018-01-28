@@ -10,8 +10,8 @@ camera {
     perspective
     right <16/9, 0, 0>
     sky <0, 1, 0>
-    location <0, 160, 0>
-    /* location <60, 20, 0> */
+    /* location <0, 160, 0> */
+    location <15, 20, 40>
     look_at <0, 0, 0>
     /* translate 1 * x */
     // translate -8 * y
@@ -83,5 +83,5 @@ sky_sphere {
 #local Dir = transform { rotate <0, clock, 0> };
 object {
     LukasPod(<0, 0, -20>, <0, 0, 1>) //vtransform(<0, 0, 1>, rotate <0, clock, 0>))
-    Spline_Trans (PodPath, clock, y, 15, 1)
+    /* Spline_Trans (PodPath, clock, y, 15, 1) */
 }
