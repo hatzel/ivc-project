@@ -1,20 +1,16 @@
 #include "include/track/track.inc"
 #include "lukas/pod.inc"
 #include "t-racer/t-racer.inc"
-#include "fabRacer/fabRacer.pov"
+/* #include "fabRacer/fabRacer.pov" */
 
 camera {
-  location <890, 80, 820 - clock/10>
-  look_at <890, 45, 710>
-  rotate <0, clock*720, 0>
+  location <950, 80, 820 - clock/2>
+  look_at <890, 80, 710>
   right x * 16/9
 }
 
-object {
-    StartArch(0)
-    scale z*-1
-    translate <890, 60, 710>
-}
+
+Track(0)
 
 object {
     LukasPod(<0, 0, 0>, <0,0,1>)
@@ -28,7 +24,13 @@ object {
     translate <900, 65, 710>
 }
 
-object {
-    fabRacer
-    translate <900, 65, 710>
+box {
+    0, <30, 20, 100>
+    translate <820, 55, 660>
+    texture { Cherry_Wood }
 }
+
+/* object { */
+/*     fabRacer */
+/*     translate <900, 65, 710> */
+/* } */
