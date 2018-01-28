@@ -1,0 +1,131 @@
+#version 3.7;
+#include "MyTextures.inc"
+#include "textures.inc"
+#include "../include/round_boi.inc"
+
+#declare Cockpit = union {
+  object {
+    RoundBoi(<0, 0, 0>)
+    translate <0, -1, 15>
+  }
+  
+  prism {
+    bezier_spline
+    linear_sweep
+    0, 1, 48
+    <-12, 0>, <-12, 0>, <-11, 0>, <-11, 0>,
+    <-11, 0>, <-11, 0>, <-11, 1>, <-11, 1>,
+    <-11, 1>, <-11, 1>, <-8, 3>, <-4, 3>,
+    <-4, 3>, <-4, 3>, <4, 3>, <4, 3>,
+    <4, 3>, <8, 3>, <11, 1>, <11, 1>,
+    <11, 1>, <11, 1>, <11, 0>, <11, 0>,
+    <11, 0>, <11, 0>, <12, 0>, <12, 0>,
+    <12, 0>, <12, 0>, <12, 1>, <12, 1>,
+    <12, 1>, <12, 3>, <4, 7>, <2, 7>,
+    <2, 7>, <2, 7>, <-2, 7>, <-2, 7>,
+    <-2, 7>, <-4, 7>, <-12, 3>, <-12, 1>,
+    <-12, 1>, <-12, 1>, <-12, 0>, <-12, 0>
+    
+    
+    texture { WhiteTexture }
+  }
+  
+  cone {
+    <0, 1, 9>, 2.5, <0, 1, 3>, 2
+    texture { WhiteTexture }
+  }
+  
+  difference {
+    sphere {
+      0, 2
+      texture { GrayTexture }
+      scale 5 * z
+      translate <0, 1, 8>
+    }
+    
+    cylinder {
+      <0, 1, 3>, <0, 1, 20>, 3
+    }
+  }
+  
+  #local cockpit_glass = sphere {
+    0, 2
+    hollow
+    texture { Glass3 }
+    scale <0, 0, 3>
+    translate <0, 3.5, 15>
+  }
+  
+  object {
+    cockpit_glass
+  }
+  
+  difference {
+    cylinder {
+      <0, 1, 9>, <0, 1, 22>, 2.5
+      texture { WhiteTexture }
+    }
+    
+    cockpit_glass
+  }
+  
+  // thruster
+  union {
+    cylinder {
+      <0, 1, 22>, <0, 1, 26>, 2
+    }
+    
+    cylinder {
+      <0, 1, 26>, <0, 1, 26.5>, 1.8
+    }
+    
+    cylinder {
+      <0, 1, 26.5>, <0, 1, 27.5>, 2
+    }
+    
+    cylinder {
+      <0, 1, 27.5>, <0, 1, 28.5>, 1.8
+    }
+    
+    #local flap = prism {
+      linear_spline
+      linear_sweep
+      0, 0.2, 5
+      <-0.25, 0>, <0.25, 0>, <0.1, 2>, <-0.1, 2>, <-0.25, 0>
+      
+      texture { BlackTexture }
+      
+      rotate -10 * x
+      translate -1.7 * y
+      translate 28.5 * z
+      
+      //rotate 100 * x
+      //translate <0, 1, 1.4>
+      //rotate 90 * z
+    }
+    
+    /*object {
+      flap
+    }*/
+    
+    #for (Count, 0, 19, 1)
+      object {
+        flap
+        rotate Count * 18 * z
+        translate 1 * y
+      }
+    #end
+    
+    texture { GrayTexture }
+  }
+  
+  //rotate 10 * x
+  //rotate 150 * y
+  //translate -10 * x
+  //translate 50 * z
+  scale 0.6
+  rotate 45 * y
+  rotate -20 * x
+  translate -4 * x
+  translate -3 * y
+}
