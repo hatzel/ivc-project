@@ -13,6 +13,8 @@ FRAME_TARGETS = $(shell printf "$(OUTDIR)/$(SCENE)%05d.png " $(FRAMES))
 
 ifeq ($(MODE),high)
 	POVQUALITY = +W1920 +H1080 +Q9 +A +R2
+else ifeq ($(MODE),medium)
+	POVQUALITY = +W1280 +H720 +Q9 +A +R2
 else ifeq ($(MODE),fast)
 	POVQUALITY = +W320 +H180 +Q9 -A
 else ifeq ($(MODE),superfast)

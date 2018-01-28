@@ -5,8 +5,8 @@
 #declare racer_fabian = object {
     fabRacer
     rotate y*90
-    scale 0.7
-    translate <0, 1, 8>
+    scale 0.6
+    translate <0, 0, 8>
 }
 
 #declare racer_lukas = object {

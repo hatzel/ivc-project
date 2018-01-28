@@ -4,42 +4,45 @@
 #include "include/racer.inc"
 
 camera {
-  location <950, 80, 820 - clock/2>
-  look_at <890, 80, 710>
+  location <100, 40, 170 - clock>
+  look_at <0, 10, 0>
   right x * 16/9
 }
 
 
-Track(0, <0, 0, 0>)
+Track(0, <890, 60, 710>)
 
 object {
     racer_lukas
-    translate <880, 65, 700>
+    rotate y*180
+    translate <-17, 5, 20>
 }
 
 object {
     racer_julian
-    translate <900, 65, 710>
+    rotate y*180
+    translate <17, 5, 20>
 }
 
 object {
     racer_fabian
-    translate <900, 65, 710>
+    rotate y*180
+    translate <0, 5, 50>
 }
 
 object {
     Grandstand(/*Detail*/ 1, /*Seed*/ 42)
-    translate <820, 55, 660>
+    translate <-80, 0, 0>
 }
 
 object {
     House()
     rotate <0, -70, 0>
-    translate <950, 61, 670>
+    translate <60, 1, -40>
 }
 
 object {
     RoundBoi(<0, 0, 0>)
-    translate <942, 60.5, 687>
+    translate <52, sin(clock / 2)*0.25 + 0.5, -23>
 }
 

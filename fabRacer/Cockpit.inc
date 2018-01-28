@@ -137,28 +137,27 @@
                0, 0, 1,
                0, 0, 0>
   }
-  
+
   object {
     Wing
     texture { GrayTexture }
-    
     rotate -90 * y
     translate <0, 2.8, 26>
   }
-  
+
   object {
     Tail_Wing_Y
     texture { DarkGrayTexture }
-    
+
     rotate -90 * z
     rotate 90 * x
     translate <1.8, 1, 26>
   }
-  
+
   object {
     Tail_Wing_Y
     texture { DarkGrayTexture }
-    
+
     rotate 90 * z
     rotate -90 * x
     translate <-1.8, 1, 26>

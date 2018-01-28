@@ -41,10 +41,11 @@
     }
 
     fog {
-        distance 0.2
+        distance 400
         color rgbt<0.75, 0.4, 1, 0.1>
+        fog_offset vlength(zero*y) - 10
         fog_type 2
-        fog_alt 1
+        fog_alt 15
     }
 
     union {
@@ -55,6 +56,6 @@
         }
         island
         water
-        translate zero
+        translate -zero
     }
 #end
