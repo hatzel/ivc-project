@@ -3,7 +3,7 @@
 #include "stones.inc"    // pre-defined scene elements
 #include "consts.inc"
 #include "glass.inc"
-#include "t-racer.inc"
+#include "t-racer/t-racer.inc"
 
 global_settings {assumed_gamma 1.0}
 background { color Green }

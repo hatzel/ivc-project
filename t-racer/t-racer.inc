@@ -55,6 +55,8 @@
 #declare t_racer = union {
   #local turbinemargin = 20;
   #local cockpitpos = <0,2,17>;
+  #local cablesocketposL = cockpitpos+<-width_scale-cablesocketradius,-width_scale,-c_inner_radius>;
+  #local cablesocketposR = cockpitpos+<width_scale+cablesocketradius,-width_scale,-c_inner_radius>;
   #local connectorposL = <-(turbinemargin/2)+HullRadius, 0, -HullLength+Connectormargin>;
   #local connectorposR = <(turbinemargin/2)-HullRadius, 0, -HullLength+Connectormargin>;
   #macro ElectricPath(V) LinearPath( connectorposL, connectorposR, V ) #end
@@ -64,8 +66,8 @@
     /*object { flap translate min_extent (turbine) }*/
     object { tturbine rotate <-90,0,180> translate (turbinemargin/2)*x }
     object { cockpit translate cockpitpos }
-    make_cable(connectorposL, <1,-1,1>, cockpitpos-1*x, <-2,-2,0>,  0.25, flaps_texture)
-    make_cable(connectorposR, <-1,-1,1>, cockpitpos+1*x, <2,-2,0>, 0.25, flaps_texture)
+    make_cable(connectorposL, <1,-1,1>, cablesocketposL, <0,0,0>,  0.25, flaps_texture)
+    make_cable(connectorposR, <-1,-1,1>, cablesocketposR, <0,0,0>, 0.25, flaps_texture)
   }
 
 // The upper one flickers very much and doesn't roll.

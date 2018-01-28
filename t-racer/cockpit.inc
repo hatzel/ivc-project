@@ -3,16 +3,29 @@
 #declare c_inner_radius = 4.3;
 /* #declare c_inner_radius = 5.3; */
 #declare c_outer_radius = 5.3;
+
+#declare cablesocketradius = c_inner_radius/4;
 #declare seatheight = c_inner_radius/4;
 
 #declare cockpitsupport = union {
   #for (i, 0, shutter_steps, 1)
-  cylinder {<0,-c_outer_radius,0> <0,0,0> 0.3 translate -1*c_inner_radius*y rotate 360/shutter_steps*i*x}
+    cylinder {<0,-c_outer_radius,0> <0,0,0> 0.3 translate -1*c_inner_radius*y rotate 360/shutter_steps*i*x}
   #end
 }
 
 #declare screen = union {
   box {<0,0,0> <0.9*c_outer_radius/3,0.2,0.5*c_outer_radius/3> }
+}
+
+#declare cablesocket = union {
+  torus { cablesocketradius*0.75 cablesocketradius*0.25 rotate -90*x }
+  difference {
+    sphere { <0,0,0> cablesocketradius texture { connector_texture} }
+    sphere { <0,0,0> cablesocketradius*0.7 }
+    box { <0,0,0> <cablesocketradius*2,cablesocketradius*2,cablesocketradius*2> translate cablesocketradius*2*-z+cablesocketradius*-x+cablesocketradius*-y}
+  }
+  texture { turbine_end_texture }
+
 }
 
 #declare seat = union {
@@ -36,7 +49,17 @@
 }
 
 #declare cockpit = union {
-  #local width_scale = c_outer_radius/3;
+  #declare width_scale = c_outer_radius/3;
+  object { cablesocket translate <-width_scale-cablesocketradius,-width_scale,-c_inner_radius>}
+  object { cablesocket translate <width_scale+cablesocketradius,-width_scale,-c_inner_radius>}
+  difference {
+    #local dim = width_scale+cablesocketradius;
+    #local dimo = dim+cablesocketradius;
+    torus {dim, cablesocketradius/2}
+    box { 0 2*dimo translate dimo*-x+dimo*-y+2*dimo*-z}
+    translate <0,-width_scale,-c_inner_radius+cablesocketradius/2>
+    texture { connector_texture }
+  }
   difference {
     torus {
       c_outer_radius width_scale
