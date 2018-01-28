@@ -3,12 +3,12 @@
 #include "consts.inc"
 #include "glass.inc"
 #include "metals.inc"
-#include "t-racer_textures.inc"
-#include "../include/electric/electric.inc"
-#include "../include/round_boi.inc"
-#include "../include/cable.inc"
-#include "turbine.inc"
-#include "cockpit.inc"
+#include "t-racer/t-racer_textures.inc"
+#include "include/electric/electric.inc"
+#include "include/round_boi.inc"
+#include "include/cable.inc"
+#include "t-racer/turbine.inc"
+#include "t-racer/cockpit.inc"
 
 
 #declare ring = difference {

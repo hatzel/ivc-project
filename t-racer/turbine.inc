@@ -1,8 +1,8 @@
 // includes
 #include "colors.inc"    // The include files contain
 #include "consts.inc"
-#include "t-racer_textures.inc"
-#include "../include/fan.inc"
+#include "t-racer/t-racer_textures.inc"
+#include "include/fan.inc"
 
 // variable settings
 /* #declare shutter_steps = 12;

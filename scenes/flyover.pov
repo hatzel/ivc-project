@@ -1,5 +1,6 @@
 #include "include/track/track.inc"
 #include "lukas/pod.inc"
+#include "t-racer/t-racer.inc"
 
 camera {
   location <890, 80, 820 - clock/10>
@@ -14,8 +15,14 @@ object {
     translate <890, 60, 710>
 }
 
-/* object { */
-/*     LukasPod(0, 0) */
-/*     translate <890, 100, 710> */
-/* } */
+object {
+    LukasPod(<0, 0, 0>, <0,0,1>)
+    scale 0.4
+    translate <880, 65, 700>
+}
 
+object {
+    t_racer
+    scale 0.5
+    translate <900, 65, 710>
+}

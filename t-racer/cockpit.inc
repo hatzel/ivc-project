@@ -1,4 +1,4 @@
-#include "t-racer_textures.inc"
+#include "t-racer/t-racer_textures.inc"
 
 #declare c_inner_radius = 4.3;
 /* #declare c_inner_radius = 5.3; */
