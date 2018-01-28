@@ -50,7 +50,7 @@
 
     union {
         object {
-            StartArch(0)
+            StartArch(waiting)
             scale z*-1
             translate <890, 60, 710>
         }
