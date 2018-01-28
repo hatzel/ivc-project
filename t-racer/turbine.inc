@@ -70,7 +70,7 @@
     translate -0.5*Width*z
     rotate 90*z
     translate Radius*x
-    rotate 10*z+z*5*sin(ceil(clock))
+    rotate 10*z+z*5*sin(0.001*ceil(clock))
 }
 
 #declare klappen = union {
