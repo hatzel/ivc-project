@@ -63,14 +63,16 @@
   #local connectorposR = <(turbinemargin/2)-HullRadius, 0, -HullLength+Connectormargin>;
   #macro ElectricPath(V) LinearPath( connectorposL, connectorposR, V ) #end
   #macro ElectricColor(V) <0.4,0.7,1.0> #end
-  Electric( 0.01,       2,         0.30,     0,        16,          0.3, 1     )
-    object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x }
-    /*object { flap translate min_extent (turbine) }*/
-    object { tturbine rotate <-90,0,90> translate (turbinemargin/2)*x }
-    object { cockpit translate cockpitpos }
-    make_cable(cableconnectorposL, <1,1,2>, cablesocketposL, <0,0,0>,  0.25, cable_texture)
-    make_cable(cableconnectorposR, <-1,1,2>, cablesocketposR, <0,0,0>, 0.25, cable_texture)
-  }
+  // old settings
+  /* Electric( 0.01,       2,         0.30,     0,        16,          0.3, 1     ) */
+  Electric( 0.01,       2,         0.20,     6,        11,          0.3     1)
+  object { tturbine rotate <-90,0,0> translate -(turbinemargin/2)*x }
+  /*object { flap translate min_extent (turbine) }*/
+  object { tturbine rotate <-90,0,90> translate (turbinemargin/2)*x }
+  object { cockpit translate cockpitpos }
+  make_cable(cableconnectorposL, <1,1,2>, cablesocketposL, <0,0,0>,  0.25, cable_texture)
+  make_cable(cableconnectorposR, <-1,1,2>, cablesocketposR, <0,0,0>, 0.25, cable_texture)
+}
 
 // The upper one flickers very much and doesn't roll.
 
