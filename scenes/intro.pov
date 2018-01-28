@@ -10,6 +10,7 @@
 
 #include "stars.inc"
 #include "colors.inc"
+#include "textures.inc"
 
 #local s = 24;
 /* #local frame = 65*s; */
@@ -51,7 +52,12 @@ sky_sphere {
 sphere {
     <0, -10100, 0>, 10000
     pigment {
-        rgb<0.3, 0, 0>
+        aoi
+        pigment_map {
+            [0.5 rgb<0.9, 0.5, 1>]
+            [0.55 rgb<0.38, 0.1, 0.68>]
+            [0.6 rgb<0.3, 0, 0.6>]
+        }
     }
     rotate <30, 0, 0>
 }
