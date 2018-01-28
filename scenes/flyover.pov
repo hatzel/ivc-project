@@ -1,4 +1,5 @@
 #include "include/track/track.inc"
+#include "include/grandstand.inc"
 #include "lukas/pod.inc"
 #include "t-racer/t-racer.inc"
 /* #include "fabRacer/fabRacer.pov" */
@@ -24,10 +25,9 @@ object {
     translate <900, 65, 710>
 }
 
-box {
-    0, <30, 20, 100>
+object {
+    Grandstand(/*Detail*/ 1, /*Seed*/ 42)
     translate <820, 55, 660>
-    texture { Cherry_Wood }
 }
 
 /* object { */

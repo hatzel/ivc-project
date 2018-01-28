@@ -151,3 +151,48 @@
         }
     }
 #end
+
+#declare StripesDepth = 0.01;
+#declare AluminiumBase =
+texture {
+
+    pigment { rgb <0.658824, 0.658824, 0.658824> }
+
+    normal {
+        wood StripesDepth ramp_wave rotate 90*y scale 0.15
+    }
+
+    finish {
+        ambient 0
+        diffuse 0.35
+        specular 0.25
+        roughness 0.1
+        reflection {
+        0.00 0.96        metallic 0.5 fresnel on     falloff 1 exponent 1.25}
+        brilliance 3.15
+
+
+    }
+}
+
+
+
+#declare BrushedAluminium =
+texture{
+  average
+  texture_map{
+   #declare R=seed(1001);
+   #declare V=0;
+   #while(V<12)        // number of samples up to 256
+    [1
+     AluminiumBase
+     normal{
+      bumps StripesDepth
+      scale <15, 15, 0.03>
+      translate <rand(R),rand(R),rand(R)>
+     }
+    ]
+    #declare V=V+1;
+   #end
+  }
+}
