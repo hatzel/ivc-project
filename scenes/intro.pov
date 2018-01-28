@@ -15,11 +15,15 @@
 /* #local frame = 65*s; */
 #local frame = clock;
 
+#local logo_in = 6*s;
+#local crawl_in = 15*s;
+#local crawl_out = 30*s;
+
 #local CameraXRot = spline {
     linear_spline
     0 0
-    60*s 0
-    70*s 30
+    crawl_out + 1*s 0
+    crawl_out + 8*s 30
     /* 70.1*s 30 */
 }
 
@@ -61,8 +65,6 @@ sphere {
     4*s + 12  0
 }
 
-#local logo_in = 183;
-
 box {
     <-8, -4.5, 9.1>, <8, 4.5, 9.1>
     texture {
@@ -84,16 +86,16 @@ box {
 #local PovracingAlpha = spline {
     linear_spline
               0  0
-        logo_in  0
-    logo_in + 1  1
-           17*s  1
-      17*s + 55  0
+    logo_in - 1  0
+        logo_in  1
+       crawl_in  1
+  crawl_in + 55  0
 }
 #local PovracingZ = spline {
     linear_spline
-    0 3
-    184 3
-    463 80
+    logo_in - 1 3
+    logo_in 3
+    crawl_in + 55 80
 }
 
 box {
@@ -118,15 +120,15 @@ box {
 #local CrawlYOffset = spline {
     linear_spline
     0 0
-    17*s 0
-    60*s 70
+    crawl_in 0
+    crawl_out 20
 };
 
 #local CrawlAlpha = spline {
     linear_spline
     0 1
-    60*s - 55 1
-    60*s 0
+    crawl_out - 55 1
+    crawl_out 0
 }
 
 box {
