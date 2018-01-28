@@ -1,5 +1,6 @@
 #include "include/track/track.inc"
 #include "include/grandstand.inc"
+#include "include/house.inc"
 #include "lukas/pod.inc"
 #include "t-racer/t-racer.inc"
 /* #include "fabRacer/fabRacer.pov" */
@@ -28,6 +29,17 @@ object {
 object {
     Grandstand(/*Detail*/ 1, /*Seed*/ 42)
     translate <820, 55, 660>
+}
+
+object {
+    House()
+    rotate <0, -70, 0>
+    translate <950, 61, 670>
+}
+
+object {
+    RoundBoi(<0, 0, 0>)
+    translate <942, 60.5, 687>
 }
 
 /* object { */
