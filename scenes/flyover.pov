@@ -1,9 +1,7 @@
 #include "include/track/track.inc"
 #include "include/grandstand.inc"
 #include "include/house.inc"
-#include "lukas/pod.inc"
-#include "t-racer/t-racer.inc"
-/* #include "fabRacer/fabRacer.pov" */
+#include "include/racer.inc"
 
 camera {
   location <950, 80, 820 - clock/2>
@@ -12,17 +10,20 @@ camera {
 }
 
 
-Track(0)
+Track(0, <0, 0, 0>)
 
 object {
-    LukasPod(<0, 0, 0>, <0,0,1>)
-    scale 0.5
+    racer_lukas
     translate <880, 65, 700>
 }
 
 object {
-    t_racer
-    scale 0.5
+    racer_julian
+    translate <900, 65, 710>
+}
+
+object {
+    racer_fabian
     translate <900, 65, 710>
 }
 
@@ -42,7 +43,3 @@ object {
     translate <942, 60.5, 687>
 }
 
-/* object { */
-/*     fabRacer */
-/*     translate <900, 65, 710> */
-/* } */

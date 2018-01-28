@@ -27,7 +27,7 @@
     }
 }
 
-#macro Track(waiting)
+#macro Track(waiting, zero)
     sky_sphere {
         pigment {
             Blue_Sky3
@@ -55,5 +55,6 @@
         }
         island
         water
+        translate zero
     }
 #end

@@ -1,7 +1,7 @@
 #version 3.7;
-#include "MyTextures.inc"
+#include "fabRacer/MyTextures.inc"
 #include "textures.inc"
-#include "../include/round_boi.inc"
+#include "include/round_boi.inc"
 
 #declare Cockpit = union {
   object {
