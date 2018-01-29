@@ -27,8 +27,8 @@ camera {
 #macro StartPath(start, delay)
 spline {
     natural_spline
-    -10 + delay, start + <0, 0, -60>
-    0 + delay, start + <0, 0, 5>
+    -10 + delay, start + <0, 0, -80>
+    0 + delay, start + <0, 0, 0>
     60 + delay, start + <rand(Rand) - 0.5, 0, -500>
     100 + delay, start + <rand(Rand) - 0.5, 0, -1000>
 }
