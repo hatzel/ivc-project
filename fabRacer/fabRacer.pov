@@ -5,7 +5,10 @@
 #include "include/blender_materials.inc"
 #include "include/electric/electric.inc"
 
-#macro ElectricPath(V) LinearPath( <-1, 0, 6>, <-1, 0, -6>, V ) #end
+#local Rand = seed(9001);
+#local wobble = 0.7*sin(0.1*clock+Rand);
+
+#macro ElectricPath(V) LinearPath( <-1, wobble, 6>, <-1, wobble, -6>, V ) #end
 #macro ElectricColor(V) <0.6,0.9,1.0> #end
 #declare fabRacer = union {
     // left turbine
@@ -14,6 +17,7 @@
       rotate 90 *  z
       rotate 180 * x
       translate -10 * z
+      translate wobble*y
     }
 
     // right turbine
@@ -22,6 +26,7 @@
       rotate 90 * z
       rotate 180 * x
       translate 10 * z
+      translate wobble*y
     }
 
     // cockpit
@@ -30,8 +35,8 @@
       rotate 90 * y
       translate <30, 5, 0>
     }
-    fab_make_cable(<5.5, 4, -10>, 0, <30, 5.5, -11.5>, 0, 0.3, Rubber)
-    fab_make_cable(<5.5, 4, 10>, 0, <30, 5.5, 11.5>, 0, 0.3, Rubber)
+    fab_make_cable(<5.5, 4+wobble, -10>, 0, <30, 5.5, -11.5>, 0, 0.3, Rubber)
+    fab_make_cable(<5.5, 4+wobble, 10>, 0, <30, 5.5, 11.5>, 0, 0.3, Rubber)
 //        Brightness, Thickness, Fuzzyness RollSpeed FlickerSpeed MinDist Lightscale
     Electric( 0.01,       2,         0.10,     5,        10,          0.3     1)
 }
